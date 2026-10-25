@@ -11,9 +11,12 @@ import AddHotel from "./pages/AddHotel";
 import AllBookings from "./pages/AllBookings";
 import AllUsers from "./pages/AllUsers";
 import EditHotel from "./pages/EditHotel";
+import Profile from "./pages/Profile";
+
 
 import "./App.css";
 import "./index.css";
+
 
 function App() {
     return (
@@ -30,6 +33,8 @@ function App() {
                 <Route path="/admin/bookings" element={<AllBookings />} />
                 <Route path="/admin/users" element={<AllUsers />} />
                 <Route path="/admin/hotels/edit/:id" element={<EditHotel />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </BrowserRouter>
     );

@@ -897,3 +897,41 @@ button {
     }
 }
 
+
+.navbar-logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 14px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fff1f2;
+    color: #be123c;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.navbar-logout:hover {
+    background: #ffe4e6;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+@media (max-width: 768px) {
+    .navbar-logout {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .nav-actions {
+        gap: 7px;
+    }
+}
+
