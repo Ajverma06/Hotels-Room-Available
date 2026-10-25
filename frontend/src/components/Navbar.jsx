@@ -10,11 +10,11 @@ export default function Navbar() {
         <span>HotelPro</span>
       </Link>
 
-      <div className="nav-links">
-        <Link to="/">Home</Link>
-        <a href="#hotels">Explore Hotels</a>
-        <Link to="/my-bookings">My Bookings</Link>
-      </div>
+      <div className="navbar-links">
+    <a href="/">Home</a>
+    <a href="/#hotels">Explore Hotels</a>
+    <a href="/my-bookings">My Bookings</a>
+</div>
 
       <div className="nav-actions">
         <Link to="/login" className="login-link">

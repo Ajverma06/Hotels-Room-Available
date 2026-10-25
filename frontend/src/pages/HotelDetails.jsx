@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { MapPin, Star, ArrowLeft } from "lucide-react";
 import API from "../services/api";
 
@@ -50,7 +50,7 @@ export default function HotelDetails() {
     }
 
     async function handleBooking() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("hotelpro_token");
 
     if (!token) {
         alert("Please login first to book a hotel.");

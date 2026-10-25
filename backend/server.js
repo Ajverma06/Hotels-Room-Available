@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const bookingRoutes = require("./routes/bookingRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
@@ -30,7 +31,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/hotels", require("./routes/hotelRoutes"));
 app.use("/api/bookings", bookingRoutes);
-app.use("/api/bookings", bookingRoutes);
+app.use("/api/admin", adminRoutes);
 
 
 const PORT = process.env.PORT || 5000;

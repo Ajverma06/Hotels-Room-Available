@@ -340,16 +340,17 @@ export default function Home() {
 
             {/* Footer */}
             <footer className="footer">
-                <div className="logo">
-                    <span>HotelPro</span>
-                </div>
+    <div className="footer-logo">
+        <span className="footer-brand">🏨 HotelPro</span>
+        <p>Find your stay. Make memories.</p>
+    </div>
 
-                <p>Find your stay. Make memories.</p>
-
-                <small>
-                    © 2026 HotelPro. College Project.
-                </small>
-            </footer>
+    <div className="footer-bottom">
+        <small>
+            © 2026 HotelPro. College Project.
+        </small>
+    </div>
+</footer>
         </>
     );
 }
