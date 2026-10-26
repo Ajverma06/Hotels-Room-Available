@@ -12,6 +12,15 @@ async function adminMiddleware(req, res, next) {
             });
         }
 
+        if (!process.env.JWT_SECRET) {
+            console.error("JWT_SECRET is missing");
+
+            return res.status(500).json({
+                success: false,
+                message: "Server authentication configuration error"
+            });
+        }
+
         const token = authHeader.split(" ")[1];
 
         const decoded = jwt.verify(
@@ -19,12 +28,16 @@ async function adminMiddleware(req, res, next) {
             process.env.JWT_SECRET
         );
 
-console.log("Admin token verified. User ID:", decoded.userId);
+        if (!decoded.userId) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid token payload"
+            });
+        }
 
-const user = await User.findById(decoded.userId).select("-password");
+        const user = await User.findById(decoded.userId)
+            .select("-password");
 
-console.log("Database user fetched:", Boolean(user));
-console.log("User role:", user?.role);
         if (!user) {
             return res.status(401).json({
                 success: false,
@@ -40,13 +53,24 @@ console.log("User role:", user?.role);
         }
 
         req.user = user;
+
         next();
     } catch (error) {
         console.error("Admin authentication error:", error.message);
 
-        return res.status(401).json({
+        if (
+            error.name === "JsonWebTokenError" ||
+            error.name === "TokenExpiredError"
+        ) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid or expired token"
+            });
+        }
+
+        return res.status(500).json({
             success: false,
-            message: "Invalid or expired token"
+            message: "Admin authentication failed"
         });
     }
 }
