@@ -9,12 +9,15 @@ const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
+
 app.use(cors({
     origin: [
         "http://localhost:5173",
-        "https://hotels-room-available.onrender.com"
+        "https://hotels-room-available-1.onrender.com"
     ]
 }));
+
+
 
 app.use(express.json());
 
